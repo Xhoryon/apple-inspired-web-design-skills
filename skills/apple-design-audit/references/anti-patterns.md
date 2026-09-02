@@ -197,20 +197,7 @@ Each entry follows: **Symptom → Why it fails → How to detect → Preferred c
 
 ---
 
-## 15. Low Contrast Glass
-
-**Symptom:** Body or label text on a translucent surface over a busy image, with no scrim or contrast protection.
-
-**Why it fails:** Glass only works if the text on it stays readable. Without contrast protection, the surface fails its actual job.
-
-**How to detect:**
-- Capture the glass surface over its worst-case background. Measure text contrast. If < 4.5:1, fail.
-
-**Correction:** Add a scrim layer (semi-opaque gradient behind text region only), theme-aware fill that goes opaque on busy backgrounds, or text shadow / backdrop stack.
-
----
-
-## 16. Glass-on-Glass
+## 15. Glass-on-Glass
 
 **Symptom:** A translucent floating navbar with translucent buttons, sitting over a translucent image header.
 
@@ -223,7 +210,7 @@ Each entry follows: **Symptom → Why it fails → How to detect → Preferred c
 
 ---
 
-## 17. Fake Apple Navbar
+## 16. Fake Apple Navbar
 
 **Symptom:** A navbar with a logo that resembles Apple's bitten apple, or a logo placeholder saying "Apple" / "MacBook" / "iPhone" instead of the user's brand.
 
@@ -236,7 +223,7 @@ Each entry follows: **Symptom → Why it fails → How to detect → Preferred c
 
 ---
 
-## 18. Copying Apple Instead of Understanding
+## 17. Copying Apple Instead of Understanding
 
 **Symptom:** Page uses Apple's marketing copy ("The thinnest product we've ever made."), product names ("iPhone", "MacBook Pro"), or photography pulled from Apple's site.
 
@@ -249,7 +236,7 @@ Each entry follows: **Symptom → Why it fails → How to detect → Preferred c
 
 ---
 
-## 19. Desktop-only Design
+## 18. Desktop-only Design
 
 **Symptom:** Mobile screenshot reveals a shrunken desktop layout — tiny text, horizontal scroll, overlapping elements, fixed-width containers.
 
@@ -262,7 +249,7 @@ Each entry follows: **Symptom → Why it fails → How to detect → Preferred c
 
 ---
 
-## 20. Performance-heavy Glass
+## 19. Performance-heavy Glass
 
 **Symptom:** Page has > 5 persistent `backdrop-filter` surfaces, no fallback for `prefers-reduced-transparency`, large blur radius (≥ 30 px), or shader-glass applied to multiple elements.
 
@@ -285,19 +272,18 @@ The audit marks these as **critical** (block ship) and **warning** (note, fix wh
 - #1 SaaS Purple Gradient (when used as page background or hero background)
 - #5 Glass Everywhere
 - #6 Blur = Liquid Glass (when the work claims to be Liquid Glass)
-- #15 Low Contrast Glass (on any production surface)
-- #16 Glass-on-Glass
-- #18 Copying Apple
-- #21 Brand Erasure
-- #25 Invisible Glass (when the surface claims to be Liquid Glass but cannot show refraction)
-- #26 Mobile-Only-Forgotten Touch Targets (15+ controls below 44×44 on a mobile demo)
+- #15 Glass-on-Glass
+- #16 Copying Apple
+- #20 Brand Erasure
+- #24 Invisible Glass (covers both the "invisible over solid backdrop" symptom and the former #15 Low Contrast Glass symptom)
+- #25 Mobile-Only-Forgotten Touch Targets (15+ controls below 44×44 on a mobile demo)
 
 **Warning** (fix when possible):
 - All others. Each contributes to checklist score and visual quality.
 
 ---
 
-## 21. Brand Erasure
+## 20. Brand Erasure
 
 **Symptom:** After an "Apple-inspired" build, the original brand identity is gone — the page reads as an Apple page with someone else's logo pasted in.
 
@@ -326,7 +312,7 @@ Examples:
 
 ---
 
-## 22. Apple Template Syndrome
+## 21. Apple Template Syndrome
 
 **Symptom:** Every Apple-inspired page converges on the same recognizable template:
 
@@ -359,7 +345,7 @@ The pack describes **principles**, not **templates**. If your output is a templa
 
 ---
 
-## 23. Fake Optical Physics
+## 22. Fake Optical Physics
 
 **Symptom:** Surface has decorative elements that *look* like lens optics but are not actually simulating any optical behavior. Examples:
 
@@ -385,7 +371,7 @@ The pack describes **principles**, not **templates**. If your output is a templa
 
 ---
 
-## 24. CJK Typography Blindness
+## 23. CJK Typography Blindness
 
 **Symptom:** SF-Pro-tuned typography rules are applied directly to Chinese / Japanese / Korean text without adjustment:
 
@@ -416,7 +402,7 @@ The pack describes **principles**, not **templates**. If your output is a templa
 
 ---
 
-## 25. Invisible Glass
+## 24. Invisible Glass
 
 **Symptom:** A glass surface is placed over a backdrop that has no optical information — flat color, near-flat color, off-white on off-white, single-tone gradient with no contrast. The `backdrop-filter` is technically active but the visual effect is invisible. The surface renders as a solid pill.
 
@@ -437,7 +423,8 @@ The pack describes **principles**, not **templates**. If your output is a templa
 
 ---
 
-## 26. Mobile-Only-Forgotten Touch Targets
+**Related (formerly #15 Low Contrast Glass):** Body or label text on a translucent surface over a busy image, with no scrim or contrast protection. Glass only works if the text on it stays readable. Without contrast protection, the surface fails its actual job. Correction: scrim layer, theme-aware fill that goes opaque on busy backgrounds, or text shadow / backdrop stack. The detection rule (text contrast < 4.5:1 over worst-case background) is now part of this entry.
+## 25. Mobile-Only-Forgotten Touch Targets
 
 **Symptom:** A page is built at desktop first. Icon buttons are 36×36 (matches the desktop aesthetic). Segmented control buttons are 32 px tall. Footer links are 16 px line-height. The page passes desktop review and ships. On mobile, users cannot tap these controls.
 
@@ -459,7 +446,7 @@ The pack describes **principles**, not **templates**. If your output is a templa
 
 ---
 
-## 27. Distortion Theater
+## 26. Distortion Theater
 
 **Symptom:** A "Liquid Glass" surface uses extremely high SVG displacement scale (≥ 10 px), exaggerated chromatic aberration, or excessive blur to look "more impressive". The result reads as water / jelly, not glass.
 

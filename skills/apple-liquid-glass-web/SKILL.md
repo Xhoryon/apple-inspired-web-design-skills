@@ -1,11 +1,8 @@
 ---
 name: apple-liquid-glass-web
 description: Use when the user explicitly asks for "Liquid Glass", "glass effect", "frosted glass", "translucent UI", a "floating navbar / toolbar", a glassy "sheet / popover / control surface", or asks to make a control feel like Apple's iOS 26 / macOS 26 / visionOS Liquid Glass. Also use whenever the design has decided a floating interaction layer needs material behavior. NOT for general glassmorphism, dashboard blurs, every-card-glass, blur-as-decoration, "make it look premium" requests without an interaction layer, or for the page background. Always pairs with apple-design-foundations and apple-design-audit.
-version: "1.0.0"
+version: "1.1.0"
 license: MIT
-metadata:
-  hermes:
-    tags: [design, apple, liquid-glass, material, effects]
 ---
 
 # apple-liquid-glass-web

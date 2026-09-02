@@ -1,11 +1,8 @@
 ---
 name: apple-ui-components
 description: Use when designing or implementing UI components in an Apple-inspired web build — navigation, toolbar, buttons, segmented control, search, tabs, media controls, sheet, popover, modal, list, settings row, card, image container, form. Defines component grammar (when to use what, hierarchy between components, when to stay native/simple) and the explicit anti-patterns (pill-everything, card-everything, glass-everything, icon-bubble-everything, eyebrow-everything). Does NOT prescribe a fixed component library — it tells the agent what to build and what NOT to do. Always paired with apple-design-foundations.
-version: "1.0.0"
+version: "1.1.0"
 license: MIT
-metadata:
-  hermes:
-    tags: [design, apple, components, ui]
 ---
 
 # apple-ui-components

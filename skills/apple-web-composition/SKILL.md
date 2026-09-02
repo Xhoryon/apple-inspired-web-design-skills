@@ -1,11 +1,8 @@
 ---
 name: apple-web-composition
-description: Use when designing any landing page, marketing page, product detail page, feature page, or long-form sectioned web page that needs to feel Apple-inspired. Defines hero, section rhythm, narrative pacing, scroll choreography, full-bleed media, and how to break out of "left headline + right card hero" and "every section = three feature cards". Also use when the user complains "every section looks the same". Do NOT use for app-internal layout (use apple-ui-components) or for one-off widget composition.
-version: "1.0.0"
+description: Use when designing any landing page, marketing page, product detail page, feature page, long-form sectioned web page, **dense productivity / dashboard / data-heavy application surface, or editorial / reading-oriented publication** that needs to feel Apple-inspired. Defines hero, section rhythm, narrative pacing, scroll choreography, full-bleed media, and the three non-marketing archetypes (Tool / Workspace, Data / Dashboard, Editorial / Reading). Also use when the user complains "every section looks the same". Do NOT use for app-internal layout (use apple-ui-components) or for one-off widget composition.
+version: "1.1.0"
 license: MIT
-metadata:
-  hermes:
-    tags: [design, apple, layout, hero, composition]
 ---
 
 # apple-web-composition
@@ -135,6 +132,52 @@ Mobile is not a shrunken desktop page.
 - Body text stays 16–17 px; never below 16 px.
 - Tap targets ≥ 44×44 px.
 - The fold (first 600–700 px) carries the headline + one CTA + maybe a small image. Nothing else.
+
+## Non-marketing archetypes (added v1.1)
+
+Apple-inspired composition applies to dense applications and data surfaces, not only to marketing pages. Two non-marketing archetypes:
+
+### Tool / Workspace
+
+For productivity tools, editors, design tools, content creation surfaces.
+
+- **Hero:** the workspace itself. The "hero" is the first paint of the actual work surface, not a marketing panel.
+- **Hierarchy:** clear primary action + secondary actions; deliberate grouping; tool affordances visible but quiet.
+- **Density:** higher than marketing. Information density is a feature, not a bug. Whitespace is for legibility, not for "calm."
+- **Navigation:** persistent left rail, top bar, or both. Search is a first-class control.
+- **Chrome restraint:** less decoration around controls. The work is the product.
+- **Disclose progressively:** advanced controls in inspector panels or menus, not in the main canvas.
+
+### Data / Dashboard
+
+For analytics, admin, monitoring, or any data-heavy surface.
+
+- **Hero:** the first chart or key metric, not a headline + CTA.
+- **Hierarchy:** primary metric, supporting metrics, drilldowns, filters. Numeric scale and grouping carry the hierarchy.
+- **Density:** high. Dashboards ARE mostly cards — the difference between "card-everything" anti-pattern and a legitimate data dashboard is *content density per card*, not "fewer cards." If each card carries real data, it is structural, not decorative.
+- **Navigation:** sidebar with category labels; tabs for sub-views; persistent search.
+- **Filter chips:** pill-shaped chips are legitimate here. They are data controls, not decoration.
+- **Radii adapt to density:** smaller radius (8–12 px) for cards; larger (12–16 px) for containers. Marketing-page radii (16–22 px) are too soft for data surfaces.
+- **No glass on data surfaces.** Glass belongs to interaction overlays, not the data itself.
+
+Composition **must not** force a marketing-page grammar onto application UI. A dense dashboard should not have an 80 px hero, a "storytelling" section arc, or a comparison table.
+
+### Editorial / Reading
+
+For long-form journalism, magazine layouts, essay-style publications, documentation sites, knowledge bases, and other content-first reading surfaces.
+
+- **Hero = typography, not image.** A display headline, byline, and one supporting visual at most. The reading surface is the product, not the marketing message.
+- **Hierarchy = reading flow.** Title -> dek -> body -> pull quote -> caption. Hierarchy is typographic scale and weight, not section dividers or callouts.
+- **Density = generous.** Generous line-height (1.6-1.8 body), wide measure (~60-75 characters), single column or one narrow sidebar. Whitespace is the navigation.
+- **Chrome restraint.** Persistent chrome (header, footer) is minimal. No competing interactive controls inside the article. Inline links, footnote markers, and one or two contextual CTAs at most.
+- **Optional media pacing.** One hero image, occasional inline figures, optional pull quotes. No carousel, no autoplay, no popups.
+- **Navigation that does not overwhelm content.** Table of contents (sticky or inline), back-to-top, related articles - present but quiet.
+- **No forced sales CTA.** No "subscribe now" above the fold. No product placement. If monetization exists, it is contextual (post-article, sidebar) not forced.
+- **No giant commercial hero.** No 80 px+ marketing headline. No alternating feature-section template.
+- **No product-story layout.** Editorial is content-first; the article structure is the layout, not a sales funnel.
+- **Liquid Glass on editorial surfaces = usually skip.** Editorial does not benefit from glass. Persistent chrome stays solid. Glass is reserved for floating interactive controls (e.g. share menu) if needed.
+
+This archetype does not replace the 5 marketing hero patterns or the Tool / Workspace and Data / Dashboard archetypes. It is a third non-marketing path for content-first reading surfaces. Apply it when the user asks for a magazine, long-form article, journal, or documentation layout.
 
 ## Anti-patterns (composition-specific)
 

@@ -58,9 +58,28 @@ For Apple-inspired web product UI, **sans-serif** is the default. Reserve serif 
 
 ## Display headings in Chinese
 
-English display rules do not transfer. Specifically:
+English display rules do not transfer to CJK. Before reading the values below, internalize the certainty level of each recommendation.
 
-### Letter-spacing
+### Certainty levels
+
+- **Hard.** CJK typography differs from Latin typography in measurable, repeatable ways. Do not skip these.
+- **Heuristic.** A reasonable starting point for a common font and size. Verify visually for your specific font, size, and brand before committing. Tune as needed.
+- **Context dependent.** The right value depends on font, script (Chinese / Japanese / Korean), brand, optical size, and surrounding composition. No single number is correct.
+
+| Rule | Certainty | Source |
+|---|---|---|
+| Do not apply English negative tracking to CJK display | **Hard** | Stroke collisions and counter-shape loss are consistent across CJK fonts. |
+| Visually verify any mixed CJK + Latin composition | **Hard** | Mixed scripts vary in metrics; the only verification is the rendered output. |
+| English line-height rules are wrong for Chinese | **Hard** | Chinese characters' square bounding boxes make tight line-height visually cramped. |
+| CJK display `font-weight: 500`, `line-height: 1.30` | **Heuristic** | Starting values for PingFang SC at 14–72 px. Verify for your font. |
+| CJK body `line-height: 1.6–1.8` | **Heuristic** | Common range; tune for font and density. |
+| CJK body `letter-spacing: 0.02em` | **Heuristic** | Slight positive tracking; depends on font. |
+| CJK mixed-script `margin-inline: 0.15em` | **Heuristic** | Optical adjustment; skip when the font already provides natural spacing or the token is punctuation-bounded. |
+| Inter-script spacing value (`margin-inline`) | **Context dependent** | Depends on font, punctuation, token (number / word / unit), and brand. |
+| PingFang SC vs Noto Sans CJK vs Source Han Sans | **Context dependent** | Each font has its own optical metrics. |
+| Chinese vs Japanese vs Korean | **Context dependent** | Each script has different rhythm and density. |
+
+### Letter-spacing (hard + heuristic combined)
 
 ```css
 /* Latin display: tight negative tracking */
@@ -76,7 +95,7 @@ English display rules do not transfer. Specifically:
 
 Negative tracking on Chinese display characters produces uneven density — strokes overlap and characters lose their counter shapes. Use `letter-spacing: 0` (or slightly positive) for Chinese display.
 
-### Font weight
+### Font weight (heuristic)
 
 ```css
 /* Latin display */
@@ -86,9 +105,9 @@ Negative tracking on Chinese display characters produces uneven density — stro
 .display-cn { font-weight: 500; }
 ```
 
-For Chinese, **500** is usually enough for display. **700** is reserved for very short hero headlines where you want maximum impact.
+For Chinese, **500** is usually enough for display. **700** is reserved for very short hero headlines where you want maximum impact. Verify against the actual rendered output for your font.
 
-### Line-height
+### Line-height (heuristic)
 
 ```css
 /* Latin display: 1.05–1.10 */
@@ -98,13 +117,13 @@ For Chinese, **500** is usually enough for display. **700** is reserved for very
 .display-cn { line-height: 1.30; }
 ```
 
-Chinese characters have a uniform square bounding box and consistent stroke density; tight line-height makes them feel cramped. `1.30` is a typical comfortable Chinese display line-height.
+Chinese characters have a uniform square bounding box and consistent stroke density; tight line-height makes them feel cramped. `1.30` is a typical comfortable Chinese display line-height. Verify for your font and size.
 
-### Optical size
+### Optical size (context dependent)
 
-PingFang SC has separate "Display" and "Text" cuts. PingFang SC Display is optimized for ≥ 20 px; PingFang SC Text is for body. Browsers do not switch automatically — rely on size + stack.
+PingFang SC has separate "Display" and "Text" cuts. PingFang SC Display is optimized for ≥ 20 px; PingFang SC Text is for body. Browsers do not switch automatically — rely on size + stack. Other CJK fonts (Noto Sans CJK, Source Han Sans) have their own optical size rules; consult the font documentation.
 
-### Character density
+### Character density (hard)
 
 A Chinese display headline at 56 px has roughly 2× the visual density of an English headline at 56 px (each character occupies a fixed square). Two lines of 8-character Chinese = 16 glyphs vs 2 lines of 8-word English = ~16 glyphs but with much wider inter-word gaps. Don't try to make Chinese "as wide as English" — accept that Chinese display is more compact per line.
 

@@ -1,16 +1,36 @@
 ---
 name: apple-design-foundations
-description: Use as the **first** skill read for any Apple-inspired web build, and re-read whenever typography, spacing, geometry, color, or depth decisions are being made. Defines the foundational design language — content-first hierarchy, restrained typography, optical spacing, concentric geometry, restrained color, depth through material/motion not shadow. Without reading this skill, agents fall back to default browser typography, equal spacing, uniform 24px radius, and purple-blue SaaS gradients. Do NOT use for project-specific design tokens (colors, fonts) that override these rules by user instruction.
-version: "1.0.0"
+description: Use when an Apple-inspired web build is in progress (typically first, after `apple-web-design` has confirmed Apple context), to establish typography, spacing, geometry, color, depth, and brand-override rules. Defines the foundational design language — content-first hierarchy, restrained typography, optical spacing, concentric geometry, restrained color, depth through material/motion not shadow. Apple-leaning values (off-white surfaces, near-black text, single restrained accent, modular spacing) are *starting heuristics* that yield to user brand tokens when present. Do NOT use for non-Apple designs, generic UI foundations, or as a general-purpose design encyclopedia. Do NOT trigger on any task that merely mentions typography or spacing — Apple context must already be established.
+version: "1.1.0"
 license: MIT
-metadata:
-  hermes:
-    tags: [design, apple, foundations, typography, spacing]
 ---
 
 # apple-design-foundations
 
 The **base layer** of the pack. Read this before any other skill. Every Apple-inspired decision downstream (composition, components, glass) inherits from these rules.
+
+## 0. Brand override model
+
+Apple-quality heuristics **yield** to existing brand tokens. The priority order is:
+
+1. **Client / existing brand tokens** (color, type, voice, spacing tokens)
+2. **Accessibility constraints** (contrast, motion, target size)
+3. **Contextual design judgment** (density, intent, audience)
+4. **Apple-inspired heuristics** (restraint, hierarchy, optical spacing, material behavior)
+
+This means: a Spotify-green accent wins over an Apple-blue accent. A brand's custom serif wins over SF Pro. A dense dashboard layout wins over a marketing-page layout. **Apple-style restraint and quality still apply to the brand's palette and rules — not to Apple's.** The skill is a quality bar applied *within* the brand, not a brand replacement.
+
+If the user has provided brand tokens (CSS variables, design system exports, or explicit values), honor them. Apple heuristics are the *default* — but always subordinate to brand.
+
+### Palette classification
+
+Values such as `#1D1D1F` (near-black), `#FBFBFD` (off-white), `#0066CC` (restrained blue), and neutral grays are **starting heuristics** for the Apple-leaning system palette, not a mandatory palette. They are:
+
+- A default for projects without a defined palette.
+- A reference for restraint (off-white vs. pure white, near-black vs. pure black, single accent vs. multi-hue).
+- A starting point for typographic rhythm (font-weight scale, line-height range).
+
+They are **not** a mandate to replace the user's brand colors. If the brand defines an accent color, use the brand color. If the brand defines typography, use the brand typography. Apply Apple-quality restraint to the brand's choices, not Apple's.
 
 ## 1. Content first
 

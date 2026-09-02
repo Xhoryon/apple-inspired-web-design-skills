@@ -1,11 +1,8 @@
 ---
 name: apple-web-design
 description: Use when the user explicitly asks for "Apple-style", "Apple-inspired", "Liquid Glass", "iOS-style", "macOS-style", or premium Apple-quality web design; asks to redesign something "more like Apple"; asks why a page "doesn't feel like Apple"; or names Apple's visual language directly. Routes to the right combination of apple-design-foundations, apple-web-composition, apple-motion-interaction, apple-ui-components, apple-liquid-glass-web, and ends every build with apple-design-audit. Do NOT use for non-Apple visual languages (Material, Fluent, brutalist, cyberpunk, editorial), pure logo/icon work, or 1:1 pixel cloning of Apple's own marketing pages. Do NOT trigger on generic requests like "make it cleaner" or "make it minimal" without an Apple reference — those are handled by general UI/design skills, not this pack.
-version: "1.0.0"
+version: "1.1.0"
 license: MIT
-metadata:
-  hermes:
-    tags: [design, apple, design-system, routing]
 ---
 
 # apple-web-design
@@ -35,7 +32,113 @@ Do **not** use when:
 - The request is for an Apple-style icon, logo, or marketing illustration only.
 - The user wants a 1:1 pixel clone of an Apple.com page (this is a brand/asset problem, not a design-system problem).
 - The work is purely backend, data, or non-visual logic.
-- The user says "make it cleaner", "make it more minimal", "make it more premium" **without any Apple reference**. Those are generic design requests. This pack is Apple-specific; using it for a brutalist or editorial site would erase the brand voice (anti-pattern #21).
+- The user says "make it cleaner", "make it more minimal", "make it more premium" **without any Apple reference**. Those are generic design requests. This pack is Apple-specific; using it for a brutalist or editorial site would erase the brand voice (anti-pattern #20).
+
+## Task-to-Skill Routing Matrix
+
+Match the request to a task family first, then load the Skills in the order shown. **Do not load a Skill for a task family that does not need it.** When in doubt, prefer fewer Skills.
+
+### Atomic component polish
+
+> "Make this button feel more Apple-like" / "Tighten this card" / "Fix this input"
+
+| | Skill |
+|---|---|
+| **Required** | `apple-ui-components` |
+| **Conditional** | `apple-design-foundations` (for tokens) |
+| **Usually skip** | `apple-web-composition`, `apple-motion-interaction`, `apple-liquid-glass-web`, `apple-design-audit` (audit only on ship) |
+
+### Navbar / toolbar / floating control
+
+> "Redesign the navbar" / "Build a bottom tab bar" / "Make the toolbar feel Apple"
+
+| | Skill |
+|---|---|
+| **Required** | `apple-ui-components` |
+| **Conditional** | `apple-liquid-glass-web` (if glass is in play), `apple-motion-interaction` (if transitions matter) |
+| **Usually skip** | `apple-web-composition`, `apple-design-audit` (audit on ship) |
+
+### Landing / product / marketing page
+
+> "Build a product launch page" / "Redesign the marketing site" / "Make the hero impactful"
+
+| | Skill |
+|---|---|
+| **Required** | `apple-design-foundations`, `apple-web-composition` |
+| **Conditional** | `apple-ui-components` (if interactive), `apple-motion-interaction` (if animation matters), `apple-liquid-glass-web` (only if glass is requested) |
+| **Usually skip** | full `apple-design-audit` until ready to ship |
+
+### Dense productivity / dashboard / data UI
+
+> "Apple-inspired analytics page" / "Build an admin panel" / "Tool UI"
+
+| | Skill |
+|---|---|
+| **Required** | `apple-design-foundations`, `apple-ui-components`, `apple-web-composition` |
+| **Conditional** | `apple-motion-interaction` (for subtle state transitions) |
+| **Usually skip** | `apple-liquid-glass-web` (data surfaces are solid), huge hero patterns, oversized CTAs |
+
+See `apple-web-composition` for the **Tool / Workspace** and **Data / Dashboard** archetypes added in v1.1.
+
+### Chinese / Japanese / Korean product
+
+> "中文产品介绍页" / "做一个中文 Apple 风格页面" / "Mixed CJK + English product page"
+
+| | Skill |
+|---|---|
+| **Required** | `apple-design-foundations` |
+| **Conditional** | `apple-design-foundations/references/cjk-typography.md` (load when Chinese/Japanese/Korean text is present), `apple-web-composition` (if marketing page), `apple-ui-components` (if interactive) |
+| **Usually skip** | `apple-liquid-glass-web` (CJK over glass needs extra care; load only on request) |
+
+CJK numeric values (font-weight 500, line-height 1.30) are **starting heuristics for PingFang SC**, not universal rules. See `apple-design-foundations/references/cjk-typography.md`.
+
+### Existing-brand redesign (preserve identity)
+
+> "Make Spotify Apple-quality" / "Polish our brand site" / "Redesign without losing our identity"
+
+| | Skill |
+|---|---|
+| **Required** | `apple-design-foundations` |
+| **Must preserve** | brand colors, brand typography, brand voice |
+| **Conditional** | `apple-web-composition` (if page-level), `apple-ui-components` (if components), `apple-motion-interaction` (if motion matters) |
+| **Forbidden** | erase brand color in favor of Apple defaults; replace brand typography with SF Pro; Apple-template clone |
+
+See `apple-design-audit/references/anti-patterns.md` #20 Brand Erasure.
+
+### Explicit Liquid Glass task
+
+> "Add Liquid Glass to the navbar" / "Use the iOS 26 glass material" / "Make the segmented control glassy"
+
+| | Skill |
+|---|---|
+| **Required** | `apple-liquid-glass-web` |
+| **Conditional** | `apple-ui-components` (for the surface structure), `apple-motion-interaction` (for morphing indicators) |
+| **Usually skip** | `apple-web-composition` (unless glass is part of a hero), `apple-design-foundations` beyond color/contrast reference |
+
+**Refraction requires optical information.** Glass over a flat color backdrop is invisible. If the design lacks contrast or content beneath the glass, skip glass or change the backdrop.
+
+### Audit-only task
+
+> "Audit this page" / "Check Apple-likeness" / "Review before ship"
+
+| | Skill |
+|---|---|
+| **Required** | `apple-design-audit` |
+| **Conditional** | browser execution adapter (Tier 2 reference) when a browser is available |
+| **Usually skip** | full composition, motion, and Liquid Glass skills unless the audit flags a specific problem |
+
+A text-only agent can apply the audit's 100-point checklist on a written description. Browser screenshots are an optional enhancement.
+
+## Routing order when multiple families match
+
+If the request combines families (e.g. "Apple-inspired Chinese dashboard with Liquid Glass"), load in this order:
+
+1. `apple-design-foundations` (always first)
+2. CJK reference if applicable
+3. Task-specific Skills in the matrix above
+4. `apple-design-audit` (always last, before ship)
+
+**Do not load** Skills outside the task family. The pack's biggest waste is over-routing: loading Liquid Glass for a button polish, or composition for a single widget.
 
 ## Routing — read these skills in order
 
@@ -66,7 +169,7 @@ digraph routing {
 ```
 
 1. **apple-design-foundations** — always read first. Sets typography, space, geometry, color, depth rules. Every visual decision downstream uses these.
-2. **apple-web-composition** — for any landing page, marketing page, product page, or sectioned long page. Defines hero, section rhythm, narrative pacing.
+2. **apple-web-composition** — for any landing page, marketing page, product page, dense UI, or sectioned long page. Defines hero, section rhythm, narrative pacing.
 3. **apple-motion-interaction** — for any interactive page or component with state changes. Spring, continuity, reduced motion.
 4. **apple-ui-components** — for any page with navigation, controls, forms, lists, sheets, popovers.
 5. **apple-liquid-glass-web** — only if the request mentions Liquid Glass, glass surfaces, translucency, floating controls, or you have decided the design needs an interaction-layer material. Most product pages do **not** need glass.
@@ -82,9 +185,9 @@ These never bend, regardless of which sub-skill is in use.
 - **Glass is an interaction layer, not a content layer.** Glass belongs on floating controls, toolbars, and popovers — never on body text, tables, forms, or every card.
 - **Type carries hierarchy, not shadows or glass.** When in doubt, fix typography and spacing before adding visual material.
 - **Motion explains spatial relationships.** Never animate purely for delight. Every transition must answer "where did this come from, where is it going."
-- **Respect accessibility.** `prefers-reduced-motion`, `prefers-reduced-transparency`, sufficient contrast, focus rings, semantic structure.
+- **Respect accessibility.** `prefers-reduced-motion`, `prefers-reduced-transparency`, sufficient contrast, focus rings, semantic structure. See `apple-motion-interaction/references/reduced-motion.md`.
 - **Performance is a feature.** Every persistent `backdrop-filter` costs GPU. Shader Glass must justify its cost.
-- **Brand stays the user's.** Do not borrow Apple logos, photography, product names, marketing copy, or trademarked typography claims.
+- **Brand stays the user's.** Do not borrow Apple logos, photography, product names, marketing copy, or trademarked typography claims. If the user has their own brand tokens (color, type, voice), those win over Apple defaults.
 
 ## Anti-shortcut table
 
@@ -102,42 +205,14 @@ If the agent (or a future agent) is tempted to skip a step, here is why each ste
 ## Working sequence for the agent
 
 1. Read this skill (`apple-web-design`) for routing.
-2. Read each skill in the order above, **fully**. Do not skim.
-3. Build the page or component.
-4. Run `apple-design-audit` end-to-end with real browser screenshots.
-5. Iterate until the audit passes. **Do not declare done on a partial pass.**
+2. Match the request to a task family in the routing matrix above.
+3. Load the required Skills for that family. Do not load Skills in the **Usually skip** column.
+4. Build the page or component.
+5. Run `apple-design-audit` end-to-end with real browser screenshots (or text-only checklist if no browser is available).
+6. Iterate until the audit passes. **Do not declare done on a partial pass.**
 
 ## Companion files
 
 - `references/pack-overview.md` — one-page map of the whole pack (optional reading).
+- `references/by-topic.md` — Tier 2 reference catalog. Load only when you need a specific reference by topic. The 22-row reference table moved here in v1.1.
 - This skill does **not** duplicate content from the sub-skills. Read them.
-
-## Reference discoverability
-
-If you know what you need, jump directly:
-
-| If you're deciding… | Read |
-|---|---|
-| Type scale, font stack, hierarchy | `apple-design-foundations/references/typography.md` |
-| Chinese / Japanese / Korean typography | `apple-design-foundations/references/cjk-typography.md` |
-| Spacing scale, grid, gutters | `apple-design-foundations/references/space-and-grid.md` |
-| Radius, concentric corners, optical alignment | `apple-design-foundations/references/geometry.md` |
-| Color palette, accent, dark mode, depth | `apple-design-foundations/references/color-and-depth.md` |
-| Hero archetype / first viewport | `apple-web-composition/references/hero-patterns.md` |
-| Section variety on a long page | `apple-web-composition/references/section-vocabulary.md` |
-| Pinned / scroll-driven storytelling | `apple-web-composition/references/scroll-storytelling.md` |
-| Mobile redesign (not a shrink) | `apple-web-composition/references/mobile-composition.md` |
-| Spring curves, easing, animation tokens | `apple-motion-interaction/references/spring-tokens.md` |
-| Reduced motion / reduced transparency | `apple-motion-interaction/references/reduced-motion.md` |
-| Navbar / bottom tab bar / sidebar | `apple-ui-components/references/navigation.md` |
-| Buttons (primary / secondary / tertiary / icon) | `apple-ui-components/references/buttons.md` |
-| Sheet / popover / modal / drawer | `apple-ui-components/references/overlays.md` |
-| Forms, inputs, validation | `apple-ui-components/references/forms.md` |
-| Level 1 CSS glass | `apple-liquid-glass-web/references/css-glass.md` |
-| Level 2 SVG glass (displacement + specular) | `apple-liquid-glass-web/references/svg-glass.md` |
-| Level 3 shader glass | `apple-liquid-glass-web/references/shader-glass.md` |
-| Text contrast on glass | `apple-liquid-glass-web/references/contrast-on-glass.md` |
-| Glass performance budget | `apple-liquid-glass-web/references/performance.md` |
-| Anti-pattern library (27 entries) | `apple-design-audit/references/anti-patterns.md` |
-| Screenshot / capture script | `apple-design-audit/references/screenshot-script.md` |
-| Lighthouse / perf checklist | `apple-design-audit/references/perf-checklist.md` |

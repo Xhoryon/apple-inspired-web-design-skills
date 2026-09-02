@@ -1,11 +1,8 @@
 ---
 name: apple-motion-interaction
 description: Use whenever the page or component has state changes, transitions, hover/focus feedback, sheet/popover/modal open-close, navigation transitions, scroll-driven effects, or any animation. Defines Apple's motion language: spring with continuity, spatial transitions, restrained scale/opacity feedback, why-the-thing-moved-everywhere motion, and reduced-motion fallback. NOT for marketing video, character animation, or 3D scene choreography (use a different skill).
-version: "1.0.0"
+version: "1.1.0"
 license: MIT
-metadata:
-  hermes:
-    tags: [design, apple, motion, animation, interaction]
 ---
 
 # apple-motion-interaction
