@@ -1,134 +1,72 @@
-# Apple-inspired Web Design Skills Pack
+# Apple Experience Skills
 
-Seven reusable Agent Skills for applying Apple-inspired design judgment to Web interfaces. The pack covers foundations, composition, motion, component grammar, Liquid Glass, and design auditing; it is a decision system rather than a template collection.
+Professional Apple-inspired and Apple-platform-aware experience-design Skills for AI coding agents.
 
-**Status:** v1.1.0 — Stable baseline
+This project is an independent system for reasoning about interaction, controls, pointer behavior, motion, navigation, direct manipulation, modality, Liquid Glass, adaptive structure, feedback, keyboard and focus, text editing, and visual media. It teaches platform-appropriate decisions rather than superficial Apple imitation.
 
-**License:** [PolyForm Noncommercial 1.0.0](./LICENSE)
+**License:** [PolyForm Noncommercial License 1.0.0](./LICENSE)
 
-## Non-affiliation
+## What it is
 
-This project is Apple-inspired but independent. It is not affiliated with, endorsed by, or sponsored by Apple Inc. It does not provide an official Apple Liquid Glass Web API or a native-equivalent implementation, and it does not distribute Apple trademark assets.
+The repository contains 13 primary Apple Experience Skills and the seven established Web companion Skills they reference. Each Skill uses provider-neutral Markdown frontmatter and progressively disclosed references so an agent can load the relevant guidance instead of the whole system for every task.
 
-## What changed in v1.1
+## Primary Skills
 
-v1.1 is an architecture and precision release. It improves when Skills trigger, which companion Skills load, how supporting references are disclosed, and how audits work with different agent capabilities.
-
-### Smarter routing
-
-The `apple-web-design` router now classifies requests by task family and marks companion Skills as:
-
-- **Required** — load for this task.
-- **Conditional** — load only when the named condition applies.
-- **Usually skip** — avoid for focused work.
-
-Small tasks no longer need the full pack. v1.1 reduces unnecessary companion-skill loading through task-aware routing.
-
-### Universal Audit
-
-`apple-design-audit` now has two capability-gated paths:
-
-- **Universal Audit:** works from available evidence such as text, source, tokens, or supplied screenshots. It does not require a browser.
-- **Browser / Runtime Verification:** an optional second path for browser-capable agents. It adds rendered evidence, responsive checks, computed styles, and runtime behavior.
-
-For final visual QA, browser-capable agents should still inspect rendered evidence when appropriate. Reports must disclose which path and evidence were used.
-
-### Brand-aware foundations
-
-Existing brand tokens take precedence over Apple-leaning defaults. Apple-inspired quality means applying restraint, hierarchy, material discipline, and accessibility within the product's identity—not replacing that identity. Apple palette values in the pack are starting heuristics, not mandatory tokens.
-
-### Broader composition and CJK guidance
-
-Composition guidance now explicitly covers:
-
-- marketing and product pages;
-- dense productivity and data interfaces;
-- editorial and reading experiences.
-
-CJK awareness remains part of the pack. Numeric typography values are starting heuristics and require validation against the actual font, script, brand, and composition; PingFang-derived values are not universal East Asian typography rules.
-
-## Skills
-
-| Skill | Purpose |
+| Skill | Responsibility |
 |---|---|
-| `apple-web-design` | Entry router with task-aware Skill selection. |
-| `apple-design-foundations` | Typography, spacing, geometry, color, depth, and brand precedence. |
-| `apple-web-composition` | Marketing, product, dense application, and editorial composition. |
-| `apple-motion-interaction` | State continuity, spring behavior, feedback, and reduced motion. |
-| `apple-ui-components` | Role-based component grammar and interaction hierarchy. |
-| `apple-liquid-glass-web` | Liquid Glass principles and Web implementation Levels 0–3. |
-| `apple-design-audit` | Universal design audit plus optional browser/runtime verification. |
+| `apple-experience-design` | Routes work by platform, input, capability, and behavior. |
+| `apple-control-states` | Defines control states, transitions, cancellation, loading, and destructive behavior. |
+| `apple-pointer-interaction` | Covers pointer-to-target relationships, hover, shared highlights, and retargeting. |
+| `apple-motion-physics` | Covers spring response, interruption, retargeting, and reduced-motion adaptation. |
+| `apple-navigation-spatial` | Defines navigation hierarchy, back semantics, spatial continuity, and scroll context. |
+| `apple-direct-manipulation` | Covers drag, swipe, pinch, gesture conflicts, and alternative input. |
+| `apple-modality-overlays` | Chooses and governs sheets, popovers, menus, alerts, and dismissal behavior. |
+| `apple-liquid-glass-fidelity` | Covers advanced native and Web-approximate Liquid Glass behavior and fallback. |
+| `apple-adaptive-structure` | Reorganizes application anatomy across platform, width, window, and input context. |
+| `apple-feedback-response` | Defines status, progress, outcomes, recovery, haptics, and multimodal feedback. |
+| `apple-keyboard-focus-commands` | Covers focus topology, keyboard traversal, shortcuts, commands, and restoration. |
+| `apple-text-input-editing` | Covers text input, IME composition, selection, editing actions, and paste policy. |
+| `apple-visual-media-composition` | Plans media roles, heroes, cinematic sequences, inspection, and asset feasibility. |
 
-The public package contains **7 Skills**, **26 references**, and **26 anti-patterns**.
+The Web companion Skills remain available for page composition, visual foundations, components, baseline Web Liquid Glass, motion, routing, and auditing. They are dependencies of the broader system, not additional Apple Experience primary Skills.
 
 ## Core principles
 
-1. **Content first.** Hierarchy and clarity lead; effects support them.
-2. **Apple-inspired is not an Apple clone.** Preserve the product's identity and platform appropriateness.
-3. **Liquid Glass is not blur or glassmorphism.** Basic frosted glass is only a building block.
-4. **Glass belongs primarily to the interaction layer.** Use it for controls and floating surfaces, not every content container.
-5. **Mobile is a composition redesign, not a desktop shrink.**
-6. **Accessibility and performance are first-class.** Reduced motion/transparency, contrast, focus, 44×44 touch targets, and rendering cost matter.
+- **Platform appropriateness over superficial fidelity.** Preserve the interaction intent and adapt or abandon behavior that does not belong on the target platform.
+- **System primitive first.** Prefer native platform behavior when it already satisfies the intent.
+- **Capability and evidence honesty.** Code, runtime observation, metadata, generation, and visual inspection are distinct evidence types.
+- **Accessibility is cross-cutting.** Essential meaning cannot depend on color, haptics, motion, or audio alone.
+- **Interaction continuity matters.** State, focus, navigation, and direct manipulation must remain coherent through interruption and adaptation.
+- **Liquid Glass is not generic glassmorphism.** On the Web it remains an approximation and must degrade safely.
+- **Asset reality before cinematic ambition.** Media composition must match the assets and inspection capabilities actually available.
 
-## Liquid Glass on the Web
+The binding project-level rules are documented in the [Capability & Evidence Contract](./APPLE-EXPERIENCE-CAPABILITY-EVIDENCE-CONTRACT.md) and [Accessibility Contract](./APPLE-EXPERIENCE-ACCESSIBILITY-CONTRACT.md).
 
-The pack distinguishes:
+## Installation and use
 
-- **Frosted Glass:** blur plus a translucent surface.
-- **Glassmorphism:** a visual genre built from frosted surfaces, borders, radii, and colored backdrops.
-- **Liquid Glass:** a behavior model spanning translucency, refraction, specular response, adaptivity, depth, dynamics, and morphing.
+Clone the repository, then copy the Skill directories and cross-cutting contracts into the Skills location supported by your agent runtime:
 
-Web implementations are approximations. The pack defines progressive Levels 0–3, from solid fallback through CSS, SVG-enhanced, and high-complexity shader approaches. Internal browser validation currently reaches Level 2 SVG displacement; Level 3 is documented but is not the primary validated default or a native-equivalent result.
-
-## Installation
-
-Copy all Skills, or only the task-specific directories you need, into the Skills directory supported by your agent runtime. For example:
-
-```sh
-cp -R skills/apple-* ~/.agents/skills/
+```bash
+git clone https://github.com/Xhoryon/apple-experience-skills.git
+mkdir -p ~/.agents/skills
+cp -R apple-experience-skills/skills/apple-* ~/.agents/skills/
+cp apple-experience-skills/APPLE-EXPERIENCE-*-CONTRACT.md ~/.agents/skills/
 ```
 
-Keep the seven directories together when you want the router to coordinate the complete pack. Runtime-specific paths may be configurable; use the active agent's documentation or configuration as the source of truth.
+Agent runtimes use different Skills directories. Replace `~/.agents/skills/` with the configured location for your runtime. Install the complete set when you want cross-Skill routing; install an individual Skill only when its companion references and named dependencies are also available.
 
-## Agent compatibility
-
-The canonical Skill source is provider-neutral:
-
-- `name`, `description`, `version`, and `license` frontmatter;
-- Markdown bodies;
-- relative references.
-
-Static compatibility was checked for Codex, Claude Code, and DeepSeek Harness. **Runtime cross-agent invocation was not independently executed for v1.1.** The project maintains one canonical Skill source rather than provider-specific forks.
-
-## Validation
-
-During v1.1 development:
-
-- 17 regression scenarios passed;
-- 12 core invariants were preserved;
-- routing, brand preservation, dense/editorial composition, CJK handling, capability-gated auditing, accessibility, and Liquid Glass safeguards were checked.
-
-Validation artifacts are maintained internally and are not included in the public Skills distribution.
-
-## Known limitations
-
-- Runtime invocation across Codex, Claude Code, and DeepSeek Harness was not independently executed for v1.1.
-- Web Liquid Glass remains an approximation of publicly described design principles, not native Apple material behavior.
-- Level 3 shader glass remains a documented high-complexity option, not the primary validated default.
-- Broad cross-browser and device validation remains limited relative to native Apple platforms.
-- CJK numeric guidance is heuristic and font-, script-, brand-, and context-dependent.
-
-Future development may broaden interaction and motion fidelity, but those capabilities are not part of v1.1.
+Start with `apple-experience-design` for cross-platform interaction work. A focused task may invoke an owning Skill directly.
 
 ## License
 
-PolyForm Noncommercial License 1.0.0 — see [LICENSE](./LICENSE).
+Licensed under the [PolyForm Noncommercial License 1.0.0](./LICENSE). Noncommercial use, modification, and redistribution are permitted under its terms. Commercial use requires separate permission.
 
-- Noncommercial use is permitted under the license terms.
-- Modification and redistribution are permitted under the license terms.
-- Commercial use requires separate permission.
+## Disclaimer
 
-## Release notes
+Independent project. Not affiliated with or endorsed by Apple Inc. Apple product and platform names are trademarks of Apple Inc. This repository provides design guidance, not official Apple APIs, specifications, or implementation guarantees.
 
-- [v1.1](./RELEASE-NOTES-v1.1.md)
-- [v1.0](./RELEASE-NOTES-v1.0.md)
+## Releases
+
+- [v2.0.0 release notes](./RELEASE-NOTES-v2.0.md)
+- [v1.1 release notes](./RELEASE-NOTES-v1.1.md)
+- [v1.0 release notes](./RELEASE-NOTES-v1.0.md)
