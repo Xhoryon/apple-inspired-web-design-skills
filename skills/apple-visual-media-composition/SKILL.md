@@ -76,9 +76,15 @@ This is **Scope-Proportional Process**: a small scoped request ("improve the ima
 23. **Scroll-owned scene state remains reversible.** Scrubbed narrative state (A → B → C → D) should reverse coherently (D → C → B → A) whether presentation is vertical, horizontal, scale, rotation, typography, or layout recomposition. User-owned state (chosen variant / color / feature) survives reverse scroll.
 24. **Video semantic conservatism.** If the current Agent cannot semantically inspect video, treat the video's visual content as `UNKNOWN` (Opaque Media mode) unless trustworthy semantic evidence exists. Metadata (duration / dimensions / codec / frame count) does NOT establish shot content / camera movement / visual continuity. Generated video does NOT self-certify visual quality. Playback capability ≠ cinematic suitability ≠ scroll-scrub suitability.
 
+## Cross-Cutting Contract Hook
+
+Visual Authenticity Contract (`APPLE-EXPERIENCE-VISUAL-AUTHENTICITY-CONTRACT.md`) applies to this Skill for visual composition, autoplay rails, peek rails, Bounded Scroll Handoff, and decorative-presentation decisions. The contract is a cross-cutting constraint; this Skill does NOT inherit its definitions wholesale. Local Visual Authenticity consequences: neutral-first / content-led color; no arbitrary AI neon / glow; no meaningless icons; no fake visualization; autoplay optional and yields to user input; Bounded Scroll Handoff preferred over wheel capture; no fabricated numbers.
+
 ## Routing integration
 
 The orchestrator (`apple-experience-design`) adds a row for the new Skill. **Selective load rule:** the row applies ONLY when the task explicitly involves visual media composition (media role / Hero / cinematic / explorer / application media modes). For ordinary state / motion / structural / material / text / focus / validation tasks, the orchestrator routes WITHOUT loading `apple-visual-media-composition`.
+
+
 
 Discriminator checklist (the orchestrator uses these to gate loading):
 

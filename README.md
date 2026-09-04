@@ -10,6 +10,8 @@ This project is an independent system for reasoning about interaction, controls,
 
 The repository contains 13 primary Apple Experience Skills and the seven established Web companion Skills they reference. Each Skill uses provider-neutral Markdown frontmatter and progressively disclosed references so an agent can load the relevant guidance instead of the whole system for every task.
 
+v2.2 strengthens visual authenticity, Desktop / Tablet / Phone composition reasoning, input-coupled interaction behavior, and media-rail / bounded scroll-handoff guidance.
+
 ## Primary Skills
 
 | Skill | Responsibility |
@@ -36,11 +38,12 @@ The Web companion Skills remain available for page composition, visual foundatio
 - **System primitive first.** Prefer native platform behavior when it already satisfies the intent.
 - **Capability and evidence honesty.** Code, runtime observation, metadata, generation, and visual inspection are distinct evidence types.
 - **Accessibility is cross-cutting.** Essential meaning cannot depend on color, haptics, motion, or audio alone.
+- **Visual authenticity is content-led.** Prefer hierarchy and semantic purpose over arbitrary neon, gradients, decorative icons, or unnecessary visualization while preserving legitimate brand, product, semantic, and accessible color.
 - **Interaction continuity matters.** State, focus, navigation, and direct manipulation must remain coherent through interruption and adaptation.
 - **Liquid Glass is not generic glassmorphism.** On the Web it remains an approximation and must degrade safely.
 - **Asset reality before cinematic ambition.** Media composition must match the assets and inspection capabilities actually available.
 
-The binding project-level rules are documented in the [Capability & Evidence Contract](./APPLE-EXPERIENCE-CAPABILITY-EVIDENCE-CONTRACT.md) and [Accessibility Contract](./APPLE-EXPERIENCE-ACCESSIBILITY-CONTRACT.md).
+The binding project-level rules are documented in the [Capability & Evidence Contract](./APPLE-EXPERIENCE-CAPABILITY-EVIDENCE-CONTRACT.md), [Accessibility Contract](./APPLE-EXPERIENCE-ACCESSIBILITY-CONTRACT.md), and [Visual Authenticity Contract](./APPLE-EXPERIENCE-VISUAL-AUTHENTICITY-CONTRACT.md).
 
 ## Installation and use
 
@@ -67,6 +70,7 @@ Independent project. Not affiliated with or endorsed by Apple Inc. Apple product
 
 ## Releases
 
+- [v2.2.0 release notes](./RELEASE-NOTES-v2.2.md)
 - [v2.1.0 release notes](./RELEASE-NOTES-v2.1.md)
 - [v2.0.0 release notes](./RELEASE-NOTES-v2.0.md)
 - [v1.1 release notes](./RELEASE-NOTES-v1.1.md)

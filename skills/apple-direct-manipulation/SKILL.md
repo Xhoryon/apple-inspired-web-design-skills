@@ -172,6 +172,10 @@ Gestures are input-modality-dependent. The Skill records the modality:
 
 The Skill declares which gestures apply to which input modality. A gesture on a non-matching modality is **ABANDON** (do not implement; the modality does not have that gesture).
 
+## Cross-Cutting Contract Hook
+
+Visual Authenticity Contract (`APPLE-EXPERIENCE-VISUAL-AUTHENTICITY-CONTRACT.md`) applies to this Skill for **Follow the hand** and **user ownership over autoplay** decisions. Local consequences: manipulation visuals should remain perceptually coupled to finger / pointer movement during gesture; no Input Lag Theatre; no queued gesture animations that fight direct input; user input may interrupt media autoplay. This Skill retains ownership of drag, swipe, gesture coupling, and interruption by direct input mechanics. The contract does NOT prescribe specific gesture thresholds / snap values / velocity cutoffs.
+
 ## Ownership boundaries
 
 - **Gesture recognition** (tap, double-tap, long-press, drag, swipe, pinch) — `apple-direct-manipulation`.

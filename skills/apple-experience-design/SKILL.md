@@ -27,6 +27,16 @@ Do NOT use for: page-level composition (stable v1.1 `apple-web-design`); compone
 8. **Text input is system-text-control-first (v0.7).** Composition / marked text / caret / selection / standard edit actions / plain vs rich text / paste policy.
 9. **Visual media is asset-and-role first (v0.8).** Media role determines prominence; asset capability determines visual ambition; whole → detail → whole; Hero is optional; reduced motion preserves narrative; user-owned state ≠ scroll-owned state.
 
+## Cross-Cutting Contract Preflight (orchestrator hook)
+
+Before primary Skill routing for design / interface work, apply relevant project-wide cross-cutting contracts:
+
+- `APPLE-EXPERIENCE-CAPABILITY-EVIDENCE-CONTRACT.md` (never bluff capability / perception; metadata ≠ semantic; generation ≠ inspection)
+- `APPLE-EXPERIENCE-ACCESSIBILITY-CONTRACT.md` (essential meaning ≠ single channel; Reduced Motion preserves task; keyboard / focus route correctly)
+- `APPLE-EXPERIENCE-VISUAL-AUTHENTICITY-CONTRACT.md` (neutral-first / content-led; no arbitrary AI decoration; no fabricated numbers)
+
+Visual Authenticity applicability examples: visual styling / UI composition → apply; adaptive interface → apply + Adaptive; interaction motion → apply + Motion / Direct Manipulation; media / cinematic presentation → apply + Visual Media. Non-UI / non-design work → not required. Visual Authenticity does NOT override accessibility, brand intent, or platform semantics.
+
 ## Routing decision (capability-gated)
 
 Step 1 — Platform. Step 2 — Input scope. Step 3 — Behavior. Step 4 — Look up verdict in `APPLE-EXPERIENCE-PLATFORM-MATRIX-v0.X.md`. Step 5 — Route.

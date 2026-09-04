@@ -60,9 +60,15 @@ Full verb × platform matrix and decision tree in `references/structural-taxonom
 
 Full anti-pattern library (14 entries) in `references/structural-anti-patterns.md`. Critical prohibitions (the 17 above) must be enforced at routing time.
 
+## Cross-Cutting Contract Hook
+
+Visual Authenticity Contract (`APPLE-EXPERIENCE-VISUAL-AUTHENTICITY-CONTRACT.md`) applies to this Skill for Desktop / Tablet / Phone composition-family decisions. Local consequences: Tablet is NOT large Phone and NOT small Desktop; Phone is NOT shrunken Desktop; no fixed device branching; no hardcoded breakpoint numerology; no dashboardification of ordinary product content; preserve narrative / task / hierarchy rather than literal geometry. Visual Authenticity is a cross-cutting constraint; this Skill does NOT import its full definitions.
+
 ## Routing integration
 
 The orchestrator (`apple-experience-design`) adds a row for the new Skill. **Selective load rule:** the row applies ONLY when the task explicitly requires structural reorganization across platform / width / window / input / context. For ordinary responsive Web pages, visual-only requests, sheet / popover / menu / modal type decisions, button polish, or state semantics, the orchestrator routes to the appropriate Skills WITHOUT loading `apple-adaptive-structure`.
+
+
 
 Discriminator checklist (the orchestrator uses these to gate loading):
 

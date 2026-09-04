@@ -111,6 +111,10 @@ The Skill does NOT recommend:
 
 These are HEURISTICS, not absolute rules. The implementer judges based on the device and use case.
 
+## Cross-Cutting Contract Hook
+
+Visual Authenticity Contract (`APPLE-EXPERIENCE-VISUAL-AUTHENTICITY-CONTRACT.md`) applies for **Input-Coupled Motion**: when this Skill handles drag / swipe / scroll-linked / scrub / user-interruption of automatic movement, visual state must respond to current input / progress rather than stale queued destination animations. Motion Physics supplies retargetable, interruptible mechanics from the current visual state; the contract owns only the cross-cutting quality constraint, not interpolation / continuity / settling / easing / physical feel — those remain this Skill's ownership. Do NOT introduce fixed millisecond limits, spring values, velocity thresholds, or snap thresholds.
+
 ## Reference catalog (Tier 2)
 
 - `references/spring-response.md` — spring response heuristics, amplitude ranges, perception.
