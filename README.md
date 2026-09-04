@@ -26,7 +26,7 @@ The repository contains 13 primary Apple Experience Skills and the seven establi
 | `apple-feedback-response` | Defines status, progress, outcomes, recovery, haptics, and multimodal feedback. |
 | `apple-keyboard-focus-commands` | Covers focus topology, keyboard traversal, shortcuts, commands, and restoration. |
 | `apple-text-input-editing` | Covers text input, IME composition, selection, editing actions, and paste policy. |
-| `apple-visual-media-composition` | Plans media roles, heroes, cinematic sequences, inspection, and asset feasibility. |
+| `apple-visual-media-composition` | Plans scene choreography, cross-axis storytelling, scroll-driven composition, conservative video evidence, and asset feasibility. |
 
 The Web companion Skills remain available for page composition, visual foundations, components, baseline Web Liquid Glass, motion, routing, and auditing. They are dependencies of the broader system, not additional Apple Experience primary Skills.
 
@@ -67,6 +67,7 @@ Independent project. Not affiliated with or endorsed by Apple Inc. Apple product
 
 ## Releases
 
+- [v2.1.0 release notes](./RELEASE-NOTES-v2.1.md)
 - [v2.0.0 release notes](./RELEASE-NOTES-v2.0.md)
 - [v1.1 release notes](./RELEASE-NOTES-v1.1.md)
 - [v1.0 release notes](./RELEASE-NOTES-v1.0.md)

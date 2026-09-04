@@ -224,7 +224,7 @@ Use the appropriate level; do not pretend a higher level.
 3. **Generation ≠ inspection.** Generating an asset does not certify it.
 4. **Inspection ≠ generation.** Inspecting an asset does not imply generating it.
 5. **Indirect / delegated evidence must remain labeled.** Do NOT upgrade provenance through reading another agent's report.
-6. **Metadata ≠ semantic media understanding.** Reading file metadata is technical inspection. It does not establish perceptual understanding.
+6. **Metadata ≠ semantic media understanding.** Reading file metadata is technical inspection. It does not establish perceptual understanding. For video specifically, metadata (duration / dimensions / codec / frame count) does not establish shot content / camera movement / visual continuity. Treat video visual content as `UNKNOWN` (Opaque Media mode) unless trustworthy semantic evidence exists.
 7. **Three existing evidence layers preserved.** Layer A (Apple official / W3C) / Layer B (Skill synthesis) / Layer C (Skill implementation vocabulary) still apply. This contract sits beside them, not above them.
 8. **No new primary Skill.** This is a project-level contract, not a Skill 14.
 

@@ -88,6 +88,83 @@ Asset:
 
 This is `USER-SUPPLIED DESCRIPTION` evidence unless the producing agent is identified as a `DELEGATED VISUAL INSPECTION` source.
 
+## Video Semantic Conservatism (Opaque Media mode)
+
+Major Capability & Evidence extension for video. If the current Agent cannot semantically inspect video, treat the video's visual content as `UNKNOWN` unless trustworthy semantic evidence exists.
+
+A video file being available proves **technical asset availability**, not understanding of its shots / content.
+
+### Metadata-only knowledge of a video
+
+Possible:
+- duration
+- dimensions
+- codec
+- frame rate
+- file size
+- audio-track presence
+- container / format
+
+These do **NOT** prove:
+- subject position
+- shot sequence
+- camera movement
+- product angle
+- visual continuity
+- transition point
+- crop safety
+- semantic timeline
+
+### Opaque Media mode
+
+For media whose technical existence is known but whose semantic visual content has not been inspected:
+
+| Field | Value |
+|---|---|
+| technical | AVAILABLE |
+| semantic visual content | UNKNOWN |
+
+An Opaque Media asset may still be:
+- stored
+- referenced
+- technically integrated
+- shown as ordinary playback media
+
+… but must NOT be the basis for detailed cinematic assumptions.
+
+### Playback ≠ Cinematic Suitability ≠ Scroll-Scrub
+
+Even if a video can technically play, the Agent may still not know whether it supports meaningful scroll-scrubbing. Potential concerns include hard scene cuts, discontinuous camera path, poor intermediate-frame meaning, seek behavior, codec / GOP characteristics, mobile support, and crop / framing changes. Do not overclaim what was not inspected / tested.
+
+### Conservative default for non-multimodal Agents
+
+If video semantics are unknown, prefer one of:
+
+1. ask user for a shot description / storyboard
+2. request a capable vision / video inspection
+3. use the video as ordinary playback media only
+4. choose a static / composed-motion alternative
+5. build a placeholder prototype pending review
+
+Do NOT automatically bind scroll progress to `video.currentTime` without independent grounding / review.
+
+### Keyframe review (bounded)
+
+If video understanding is unavailable but tooling can extract a SMALL representative keyframe set safely, keyframes may support bounded visual inspection. However:
+- sampled frames may miss important transitions
+- keyframes do NOT automatically prove smooth temporal continuity
+- one inspected frame does NOT prove the whole video
+
+Evidence must remain bounded.
+
+### Generated video
+
+Preserve: generation capability ≠ inspection capability. An Agent that can generate a video but cannot inspect it may NOT claim product consistency, camera continuity, temporal coherence, or transition quality. Require direct capable inspection, delegated inspection, user review, or a lower-risk fallback before treating the generated video as validated cinematic media.
+
+### Metadata-to-Storyboard Hallucination
+
+Adversarial rule: "The video is 8 seconds long, therefore 0–2 s is establish, 2–5 s rotation, 5–8 s detail." REJECT. Timeline meaning cannot be inferred from duration alone.
+
 ## Visual Evidence Ladder
 
 Project / Skill-owned Layer C taxonomy (NEVER Apple terminology):
